@@ -1,0 +1,35 @@
+{
+  "name": "fetch-xl",
+  "version": "0.1.0",
+  "description": "Fluent, interceptable and configurable fetch wrapper",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "browser-sync start --server './' --files 'src' 'test'",
+    "test": "to do"
+  },
+  "keywords": [
+    "fetch-xl",
+    "FetchXL",
+    "XL",
+    "fluent",
+    "interceptable",
+    "configurable",
+    "interceptor",
+    "fetch",
+    "wrapper",
+    "whatwg",
+    "generator"
+  ],
+  "devDependencies": {
+    "browser-sync": "2.17.5",
+    "eslint": "3.8.1",
+    "eslint-config-airbnb": "12.0.0",
+    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.4.1",
+    "systemjs": "0.19.39",
+    "systemjs-plugin-babel": "0.0.16"
+  },
+  "author": "Ben Verbist",
+  "license": "ISC"
+}

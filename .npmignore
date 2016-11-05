@@ -1,0 +1,13 @@
+/src/**/*.spec.js
+/test
+.babelrc
+.eslintrc
+.gitignore
+.npmignore
+.nvmrc
+index.html
+systemjs.config.js
+
+.idea
+.DS_Store
+*.log
