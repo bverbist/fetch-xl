@@ -30,6 +30,10 @@
     "systemjs": "0.19.39",
     "systemjs-plugin-babel": "0.0.16"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bverbist/fetch-xl.git"
+  },
   "author": "Ben Verbist",
   "license": "ISC"
 }
