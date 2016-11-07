@@ -1,11 +1,8 @@
 import {AWAIT_CALL} from './effectActionTypes';
-import action from '../../util/action';
-
-export const createEffect = (type, payload) =>
-    action(type, payload, ['isEffectAction', true]);
+import {effectAction} from './effectActionHandler';
 
 export const awaitCall = (funcToCall, ...callArgs) =>
-    createEffect(AWAIT_CALL, {
+    effectAction(AWAIT_CALL, {
         funcToCall,
         callArgs
     });

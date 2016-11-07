@@ -1,4 +1,5 @@
 import {AWAIT_CALL} from './effectActionTypes';
+import action from '../../util/action';
 import is from '../../util/is';
 import verify from '../../util/verify';
 
@@ -20,10 +21,13 @@ export const handleEffect = (effectAction) => {
     return Promise.resolve(effectResult);
 };
 
-const addHandler = (effectActionType, payloadHandlerFn) => {
+export const effectAction = (type, payload) =>
+    action(type, payload, ['isEffectAction', true]);
+
+export const addHandler = (effectActionType, payloadHandlerFn) => {
     verify(payloadHandlerFn, is.function, `The payloadHandlerFn for the effect action type ${effectActionType} should be a function.`);
 
     effectHandler[effectActionType] = payloadHandlerFn;
 };
 
-export default {addHandler};
+export default {effectAction, addHandler};

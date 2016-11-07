@@ -1,7 +1,7 @@
 import {DEFAULT} from './interceptorPriorities';
 import {verifyName, verifyPriority, verifyInterceptFunction} from './interceptorVerifier';
 
-class InterceptorBuilder {
+export class InterceptorBuilder {
     static interceptor(name) {
         return new InterceptorBuilder(name);
     }
