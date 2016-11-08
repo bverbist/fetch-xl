@@ -48,6 +48,25 @@ npm install fetch-xl
 ### InterceptorBuilder
 * __goal:__ fluent api to build an interceptor
 
+### apiConfigurator
+* __goal:__
+  * fluent api to configure your fetch api/resources
+  * api configurations can be done on __multiple configuration levels__ - defaults, resource, action - where each level is in itself a RequestBuilder
+    * the configurations are passed on to the lower level(s) so that e.g. the interceptors and baseUrl configured on the 'defaults' level will automatically be active on each 'lower' resource and action levels
+  * multiple api's (with different baseUrl's) can be configured if needed, just call another apiConfigurator
+* __multiple configuration levels:__
+  * __defaults:__ for the default configuration of the api, e.g. the baseUrl and interceptors and/or headers that have to be applied for all resources/actions
+  * __resource:__ for the configuration of a particular resource (a group of resource actions all sharing the same base url)
+  * __action:__ for the configuration of a specific action
+  * Example - a typical use case could be:
+    * _defaults_ - http://some.site.com/rest/api
+      * _resource A_ - /users
+        * _action A1_ - GET  = to get all the users
+        * _action A2_ - GET /:userId  = to get a single user
+      * _resource B_ - /orders
+        * _action B1_ - POST  = to place an order (create)
+        * _action B2_ - PUT /:orderId  = to update an order
+
 ## Usage
 fetch-xl is still a 'Work In Progress' ... examples will follow
 
