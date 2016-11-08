@@ -8,8 +8,10 @@ import runInterceptor from './interceptor/runInterceptor';
 import verify from '../util/verify';
 import is from '../util/is';
 
-const fetch = (requestBuilder, interceptors = []) => {
+const fetch = (requestBuilder) => {
     verify(requestBuilder, is.builder, 'RequestBuilder input should be a builder.');
+
+    const interceptors = is.set(requestBuilder.interceptors) ? requestBuilder.interceptors : [];
 
     const interceptorChain = setupInterceptorChain(interceptors);
 

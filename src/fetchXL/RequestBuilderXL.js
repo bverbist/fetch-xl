@@ -40,6 +40,6 @@ export class RequestBuilderXL extends RequestBuilder {
     }
 
     fetch() {
-        return fetcherXL.fetch(this, this.interceptors);
+        return fetcherXL.fetch(this);
     }
 }
