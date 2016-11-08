@@ -70,6 +70,7 @@ const commentsResource = testApi.resource()
 commentsResource.action()
     .get('/:postId')
     .pathParam('postId', '2')
+    .header('X-ABC', 'test123')
     .fetch()
     .then(
         (response) => {

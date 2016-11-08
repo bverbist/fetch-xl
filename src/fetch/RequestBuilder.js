@@ -1,4 +1,4 @@
-/* global Request Headers */
+/* global Request */
 
 import fetcher from './fetcher';
 import {METHOD, HEADER} from '../util/http';
@@ -66,10 +66,10 @@ export class RequestBuilder {
 
     header(name, value) {
         if (!this.initOptions.headers) {
-            this.initOptions.headers = new Headers();
+            this.initOptions.headers = {};
         }
 
-        this.initOptions.headers.append(name, value);
+        this.initOptions.headers[name] = value;
         return this;
     }
 
