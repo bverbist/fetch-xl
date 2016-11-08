@@ -4,30 +4,30 @@ import {METHOD} from '../util/http';
 import is from '../util/is';
 
 export class RequestBuilderXL extends RequestBuilder {
-    static get(url) {
-        return new RequestBuilderXL(METHOD.GET, url);
+    static get(url, parentRequestBuilderXL = null) {
+        return new RequestBuilderXL(METHOD.GET, url, parentRequestBuilderXL);
     }
 
-    static post(url) {
-        return new RequestBuilderXL(METHOD.POST, url);
+    static post(url, parentRequestBuilderXL = null) {
+        return new RequestBuilderXL(METHOD.POST, url, parentRequestBuilderXL);
     }
 
-    static put(url) {
-        return new RequestBuilderXL(METHOD.PUT, url);
+    static put(url, parentRequestBuilderXL = null) {
+        return new RequestBuilderXL(METHOD.PUT, url, parentRequestBuilderXL);
     }
 
-    static patch(url) {
-        return new RequestBuilderXL(METHOD.PATCH, url);
+    static patch(url, parentRequestBuilderXL = null) {
+        return new RequestBuilderXL(METHOD.PATCH, url, parentRequestBuilderXL);
     }
 
-    static delete(url) {
-        return new RequestBuilderXL(METHOD.DELETE, url);
+    static delete(url, parentRequestBuilderXL = null) {
+        return new RequestBuilderXL(METHOD.DELETE, url, parentRequestBuilderXL);
     }
 
-    constructor(method, url) {
-        super(method, url);
+    constructor(method, url, parentRequestBuilderXL = null) {
+        super(method, url, parentRequestBuilderXL);
 
-        this.interceptors = [];
+        this.interceptors = is.set(parentRequestBuilderXL) ? parentRequestBuilderXL.interceptors : [];
     }
 
     interceptor(interceptor) {

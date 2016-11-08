@@ -1,3 +1,5 @@
+import is from './is';
+
 export const containsUrlParam = (url) =>
     url.indexOf('?') > -1;
 
@@ -15,4 +17,8 @@ export const replacePathParam = (paramName) => ({
         inUrl: (url) =>
             url.replace(`:${paramName}`, paramValue)
     })
+});
+
+export const appendUrl = (urlPart = '') => ({
+    toUrl: (url = '') => `${url}${urlPart}`
 });

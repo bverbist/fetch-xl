@@ -2,34 +2,46 @@
 
 import fetcher from './fetcher';
 import {METHOD, HEADER} from '../util/http';
-import {appendUrlParam, replacePathParam} from '../util/url';
+import {appendUrl, appendUrlParam, replacePathParam} from '../util/url';
+import is from '../util/is';
 
 export class RequestBuilder {
-    static get(url) {
-        return new RequestBuilder(METHOD.GET, url);
+    static get(url, parentRequestBuilder = null) {
+        return new RequestBuilder(METHOD.GET, url, parentRequestBuilder);
     }
 
-    static post(url) {
-        return new RequestBuilder(METHOD.POST, url);
+    static post(url, parentRequestBuilder = null) {
+        return new RequestBuilder(METHOD.POST, url, parentRequestBuilder);
     }
 
-    static put(url) {
-        return new RequestBuilder(METHOD.PUT, url);
+    static put(url, parentRequestBuilder = null) {
+        return new RequestBuilder(METHOD.PUT, url, parentRequestBuilder);
     }
 
-    static patch(url) {
-        return new RequestBuilder(METHOD.PATCH, url);
+    static patch(url, parentRequestBuilder = null) {
+        return new RequestBuilder(METHOD.PATCH, url, parentRequestBuilder);
     }
 
-    static delete(url) {
-        return new RequestBuilder(METHOD.DELETE, url);
+    static delete(url, parentRequestBuilder = null) {
+        return new RequestBuilder(METHOD.DELETE, url, parentRequestBuilder);
     }
 
-    constructor(method, url) {
-        this.url = url;
-        this.initOptions = {
-            method
-        };
+    constructor(method, url, parentRequestBuilder = null) {
+        if (is.set(parentRequestBuilder)) {
+            this.url = parentRequestBuilder.url;
+            this.initOptions = parentRequestBuilder.initOptions;
+
+            if (is.set(method)) {
+                this.initOptions.method = method;
+            }
+
+            this.url = appendUrl(url).toUrl(this.url);
+        } else {
+            this.url = url;
+            this.initOptions = {
+                method
+            };
+        }
     }
 
     pathParam(name, value) {

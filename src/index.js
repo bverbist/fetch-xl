@@ -1,4 +1,5 @@
 import * as interceptorPriorities from './fetchXL/interceptor/interceptorPriorities';
+import apiConfigurator from './fetchXL/apiConfigurator';
 
 // to be able to do basic fetch calls
 export {RequestBuilder} from './fetch/RequestBuilder';
@@ -16,4 +17,4 @@ export {awaitCall} from './fetchXL/effect/effectActions';
 // to be able to make your own effectActions
 export {effectAction, addHandler} from './fetchXL/effect/effectActionHandler';
 
-export default {};
+export default apiConfigurator;
