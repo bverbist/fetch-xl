@@ -44,6 +44,7 @@ const testApi = apiConfigurator();
 testApi.defaults()
     .baseUrl(BASE_TEST_URL)
     .interceptor(interceptors.rejectHttpErrorStatusResponseInterceptor);
+
 const postsResource = testApi.resource()
     .baseUrl('/posts')
     .interceptor(interceptors.jsonResponseInterceptor);
@@ -58,5 +59,24 @@ postsResource.action()
         },
         (error) => {
             console.log('[04] GET fetch NOK');
+            console.log(JSON.stringify(error));
+        });
+
+
+console.log('[05] Other resources/actions only share the configuration of the shared upper levels');
+const commentsResource = testApi.resource()
+    .baseUrl('/comments')
+    .interceptor(interceptors.jsonResponseInterceptor);
+commentsResource.action()
+    .get('/:postId')
+    .pathParam('postId', '2')
+    .fetch()
+    .then(
+        (response) => {
+            console.log('[05] GET fetch ok');
+            console.log(JSON.stringify(response));
+        },
+        (error) => {
+            console.log('[05] GET fetch NOK');
             console.log(JSON.stringify(error));
         });

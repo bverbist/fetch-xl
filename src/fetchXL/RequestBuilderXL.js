@@ -2,6 +2,7 @@ import fetcherXL from './fetcherXL';
 import {RequestBuilder} from '../fetch/RequestBuilder';
 import {METHOD} from '../util/http';
 import is from '../util/is';
+import {copyArray} from '../util/clone';
 
 export class RequestBuilderXL extends RequestBuilder {
     static get(url, parentRequestBuilderXL = null) {
@@ -27,7 +28,7 @@ export class RequestBuilderXL extends RequestBuilder {
     constructor(method, url, parentRequestBuilderXL = null) {
         super(method, url, parentRequestBuilderXL);
 
-        this.interceptors = is.set(parentRequestBuilderXL) ? parentRequestBuilderXL.interceptors : [];
+        this.interceptors = is.set(parentRequestBuilderXL) ? copyArray(parentRequestBuilderXL.interceptors) : [];
     }
 
     interceptor(interceptor) {

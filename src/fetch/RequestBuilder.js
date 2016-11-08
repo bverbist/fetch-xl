@@ -4,6 +4,7 @@ import fetcher from './fetcher';
 import {METHOD, HEADER} from '../util/http';
 import {appendUrl, appendUrlParam, replacePathParam} from '../util/url';
 import is from '../util/is';
+import {cloneSimpleObject} from '../util/clone';
 
 export class RequestBuilder {
     static get(url, parentRequestBuilder = null) {
@@ -29,7 +30,7 @@ export class RequestBuilder {
     constructor(method, url, parentRequestBuilder = null) {
         if (is.set(parentRequestBuilder)) {
             this.url = parentRequestBuilder.url;
-            this.initOptions = parentRequestBuilder.initOptions;
+            this.initOptions = cloneSimpleObject(parentRequestBuilder.initOptions);
 
             if (is.set(method)) {
                 this.initOptions.method = method;
