@@ -1,9 +1,9 @@
-import {REQUEST, RESPONSE, ERROR, isPropagateAction} from './propagateActionTypes';
-import {CHAIN_ACTION} from './interceptorChain';
-import {propagateError} from './propagateActions';
-import {runIteratorAndReturnPromiseThatResolvesWithTheIteratorsLastValue} from '../iterator/runIterator';
-import is from '../../util/is';
-import verify from '../../util/verify';
+import {REQUEST, RESPONSE, ERROR, isPropagateAction} from '../propagateActionTypes';
+import {CHAIN_ACTION} from '../interceptorChain';
+import {propagateError} from '../propagateActions';
+import {runIteratorAndReturnPromiseThatResolvesWithTheIteratorsLastValue} from '../../iterator/runIterator';
+import is from '../../../util/is';
+import verify from '../../../util/verify';
 
 const INTERCEPT_FUNCTION = {
     [REQUEST]: 'interceptRequest',

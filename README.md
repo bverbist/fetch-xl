@@ -34,7 +34,7 @@ npm install fetch-xl
   * propagateResponse : to pass a success response back up the interceptorChain
   * propagateError : to pass an error response back up the interceptorChain
 * __effectActions:__
-  * __awaitCall:__ if you need to call an asynchronous function (that returns a promise) during the intercept function. Yielding awaiCall will stop the intercept function until its promise is resolved. Surround it with a try-catch block if you want to handle the promise rejection.
+  * __awaitCall:__ if you need to call an asynchronous function (that returns a promise) during the intercept function. Yielding awaitCall will stop the intercept function until its promise is resolved. Surround it with a try-catch block if you want to handle the promise rejection.
   * you can add your own effectAction
 * __provided interceptors:__
   * interceptRequest-interceptors:
