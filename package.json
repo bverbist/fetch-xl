@@ -1,6 +1,6 @@
 {
   "name": "fetch-xl",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Fluent, interceptable (using es6 generators), configurable and loggable fetch wrapper",
   "main": "src/index.js",
   "scripts": {
