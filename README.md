@@ -3,8 +3,11 @@ Fluent, interceptable and configurable fetch wrapper
 
 ## Installation
 ```
-npm install fetch-xl
+npm install fetch-xl --save
 ```
+
+Depending on your browser support, you will also need the fetch polyfill and a promise polyfill.
+See [fetch polyfill](https://github.com/github/fetch) for more details.
 
 ## Key Concepts
 
