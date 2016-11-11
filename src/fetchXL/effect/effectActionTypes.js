@@ -1,6 +1,6 @@
-import {isAction} from '../../util/action';
+import is from '../../util/is';
 
 export const AWAIT_CALL = 'AWAIT_CALL';
 
 export const isEffectAction = (act) =>
-    isAction(act) && act.isEffectAction === true;
+    is.action(act) && act.isEffectAction === true;

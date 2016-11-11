@@ -1,16 +1,19 @@
-/* global SystemJS */
+/* global System */
 
-SystemJS.config({
+System.config({
     baseURL: '/',
     defaultJSExtensions: true,
     transpiler: 'plugin-babel',
 
-    // disable ES2015 feature transpilation for local development (chrome supports it already)
     meta: {
         '*.js': {
             babelOptions: {
+                // disable ES2015 feature transpilation for local development (chrome supports it already)
                 es2015: false
             }
+        },
+        'node_modules/babel-polyfill/dist/polyfill.js': {
+            format: 'global'
         }
     },
 

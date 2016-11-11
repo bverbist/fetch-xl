@@ -15,7 +15,4 @@ const action = (type, payload, ...extraKeyValueArrays) => {
     return actionObj;
 };
 
-export const isAction = (act) =>
-    act && act.type && act.payload;
-
 export default action;

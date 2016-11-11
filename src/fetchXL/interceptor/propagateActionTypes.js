@@ -1,4 +1,4 @@
-import {isAction} from '../../util/action';
+import is from '../../util/is';
 
 export const REQUEST = 'REQUEST';
 export const RESPONSE = 'RESPONSE';
@@ -14,4 +14,4 @@ export const isErrorActionType = (action) =>
     action.type === ERROR;
 
 export const isPropagateAction = (act) =>
-    isAction(act) && (isRequestActionType(act) || isResponseActionType(act) || isErrorActionType(act));
+    is.action(act) && (isRequestActionType(act) || isResponseActionType(act) || isErrorActionType(act));
