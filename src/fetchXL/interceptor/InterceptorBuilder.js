@@ -42,5 +42,3 @@ export class InterceptorBuilder {
         return this.interceptor;
     }
 }
-
-export default InterceptorBuilder;

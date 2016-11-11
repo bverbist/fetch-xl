@@ -47,8 +47,6 @@ function* interceptorChain(interceptors = []) {
             interceptor = sortedInterceptors[currentInterceptorIndex];
         }
 
-        console.log(`chain [${chainAction}][${interceptor.name}][${endOfRequestChain}]`);
-
         if (chainAction === CHAIN_ACTION.PREV && currentInterceptorIndex === 0) {
             return [interceptor, endOfRequestChain];
         }

@@ -54,7 +54,6 @@ export const runIteratorAndReturnPromiseThatResolvesWithTheIteratorsLastValue = 
             }
 
             if (done) {
-                console.log(`iterator done: [${JSON.stringify(lastDefinedValue)}]`);
                 resolve(lastDefinedValue);
             } else if (is.promise(value)) {
                 value

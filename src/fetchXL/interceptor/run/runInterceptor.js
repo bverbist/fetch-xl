@@ -11,7 +11,7 @@ const INTERCEPT_FUNCTION = {
     [ERROR]: 'interceptResponseError'
 };
 
-const runInterceptor = (interceptor, prevPropagateAction) => {
+const runInterceptor = (interceptor, prevPropagateAction, loggers) => {
     const interceptFunction = INTERCEPT_FUNCTION[prevPropagateAction.type];
 
     return new Promise((resolve) => {
@@ -19,16 +19,21 @@ const runInterceptor = (interceptor, prevPropagateAction) => {
             const propagateAction = prevPropagateAction;
             resolvePropagateActionWithItsChainAction(propagateAction);
         } else {
+            const whichInterceptorLog = `${interceptFunction} [${interceptor.name}]`
+            loggers.interceptorStartLogger.log(`${whichInterceptorLog} START`);
+
             try {
                 runIteratorAndReturnPromiseThatResolvesWithTheIteratorsLastValue(
                     interceptor[interceptFunction](prevPropagateAction.payload)
                 ).then((propagateAction) => {
                     verifyIsPropagateAction(propagateAction, interceptFunction);
                     verifyPropagateActionTypeAllowedAfterPrevType(prevPropagateAction, propagateAction);
+                    logInterceptorInAndOutput(loggers, prevPropagateAction, propagateAction, whichInterceptorLog);
                     resolvePropagateActionWithItsChainAction(propagateAction);
                 });
             } catch (error) {
                 const propagateAction = propagateError(error);
+                logInterceptorInAndOutput(loggers, prevPropagateAction, propagateAction, whichInterceptorLog);
                 resolvePropagateActionWithItsChainAction(propagateAction);
             }
         }
@@ -41,6 +46,15 @@ const runInterceptor = (interceptor, prevPropagateAction) => {
 };
 
 export default runInterceptor;
+
+function logInterceptorInAndOutput(loggers, prevPropagateAction, propagateAction, whichInterceptorLog) {
+    if (loggers.interceptorInOutLogger.isEnabled()) {
+        loggers.interceptorInOutLogger.logGroupStart(`${whichInterceptorLog} IN/OUT`);
+        loggers.interceptorInOutLogger.logGroupMsg('Input', prevPropagateAction);
+        loggers.interceptorInOutLogger.logGroupMsg('Output', propagateAction);
+        loggers.interceptorInOutLogger.logGroupEnd();
+    };
+}
 
 function determineChainDirectionByResultLastInterceptor(prevPropagateAction, propagateAction) {
     switch (propagateAction.type) {

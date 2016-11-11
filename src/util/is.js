@@ -1,6 +1,6 @@
 import {isAction} from './action';
 
-const GeneratorConstructor = (function* () {/**/}).constructor;
+const GeneratorConstructor = (function* () { /**/ }).constructor;
 
 const is = {
     undefined: (val) => typeof val === 'undefined',
@@ -13,7 +13,8 @@ const is = {
     generator: (gen) => gen instanceof GeneratorConstructor,
     iterator: (iter) => iter && is.function(iter.next) && is.function(iter.throw),
     action: isAction,
-    builder: (bldr) => bldr && is.function(bldr.build)
+    builder: (bldr) => bldr && is.function(bldr.build),
+    logger: (logr) => logr && is.function(logr.log)
 };
 
 export default is;

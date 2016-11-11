@@ -1,4 +1,4 @@
-import InterceptorBuilder from '../InterceptorBuilder';
+import {InterceptorBuilder} from '../InterceptorBuilder';
 import {TO_TEXT_RESPONSE} from '../interceptorPriorities';
 import {propagateResponse} from '../propagateActions';
 import {awaitCall} from '../../effect/effectActions';

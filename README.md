@@ -11,6 +11,9 @@ npm install fetch-xl
 ### RequestBuilder
 * __goal:__ fluent api to build a fetch Request (e.g. url, headers, body, etc.)
 
+### RequestBuilderXL
+* __goal:__ Enhanced fluent api RequestBuilder that also allows the configuration of request/response/error interceptors and some debug logging.
+
 ### Interceptor
 * __goal:__
   * to intercept the request before it's executed/fetched, or to intercept the response or error that's returned by the fetch action

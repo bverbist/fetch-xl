@@ -1,4 +1,4 @@
-import InterceptorBuilder from '../InterceptorBuilder';
+import {InterceptorBuilder} from '../InterceptorBuilder';
 import {TO_JSON_BODY} from '../interceptorPriorities';
 import {propagateRequest} from '../propagateActions';
 import is from '../../../util/is';

@@ -6,7 +6,7 @@
  *   Instead, it will resolve normally, and it will only reject on network failure, or if anything prevented the request from completing.
  */
 
-import InterceptorBuilder from '../InterceptorBuilder';
+import {InterceptorBuilder} from '../InterceptorBuilder';
 import {LAST} from '../interceptorPriorities';
 import {propagateResponse} from '../propagateActions';
 import {isStatusInSuccessRange} from '../../../util/http';
@@ -19,11 +19,8 @@ const rejectHttpErrorStatusResponseInterceptor = InterceptorBuilder.interceptor(
 export default rejectHttpErrorStatusResponseInterceptor;
 
 function* rejectHttpErrorStatus(response) {
-    console.log(`rejectHttpErrorStatus [${JSON.stringify(response)}]`);
     if (isStatusInSuccessRange(response.status)) {
-        console.log(`rejectHttpErrorStatus [${response.status}]`);
         yield propagateResponse(response);
-        console.log(`rejectHttpErrorStatus before return [${response.status}]`);
         return;
     }
 

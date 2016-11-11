@@ -116,6 +116,6 @@ export class RequestBuilder {
     }
 
     fetch() {
-        return fetcher.fetch(this.build());
+        return fetcher.fetch(this);
     }
 }
