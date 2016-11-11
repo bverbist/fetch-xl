@@ -16,6 +16,7 @@ export const setupInterceptorChain = (interceptors) => {
     return chain;
 };
 
+/* eslint consistent-return: "off" */
 function* interceptorChain(interceptors = []) {
     const sortedInterceptors = sortInterceptorsByAscendingPriority(interceptors);
 

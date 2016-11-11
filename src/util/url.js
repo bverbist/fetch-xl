@@ -1,5 +1,3 @@
-import is from './is';
-
 export const containsUrlParam = (url) =>
     url.indexOf('?') > -1;
 

@@ -39,7 +39,7 @@ RequestBuilderXL.get(TEST_URL.GET)
     });
 
 
-console.log('[04] Use default export function (= apiConfigurator) to configure your (resource) api fluently + FetchXL interceptor debug logging');
+console.log('[04] Use default export function (= apiConfigurator) to configure your (resource) api fluently + logging');
 const testApi = apiConfigurator();
 testApi.defaults()
     .baseUrl(BASE_TEST_URL)

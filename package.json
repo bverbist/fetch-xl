@@ -4,6 +4,7 @@
   "description": "Fluent, interceptable and configurable fetch wrapper",
   "main": "src/index.js",
   "scripts": {
+    "eslint": "eslint src/ test/",
     "serve": "browser-sync start --server './' --files 'src' 'test'",
     "test": "to do"
   },

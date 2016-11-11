@@ -19,7 +19,7 @@ const runInterceptor = (interceptor, prevPropagateAction, loggers) => {
             const propagateAction = prevPropagateAction;
             resolvePropagateActionWithItsChainAction(propagateAction);
         } else {
-            const whichInterceptorLog = `${interceptFunction} [${interceptor.name}]`
+            const whichInterceptorLog = `${interceptFunction} [${interceptor.name}]`;
             loggers.interceptorStartLogger.log(`${whichInterceptorLog} START`);
 
             try {
@@ -53,7 +53,7 @@ function logInterceptorInAndOutput(loggers, prevPropagateAction, propagateAction
         loggers.interceptorInOutLogger.logGroupMsg('Input', prevPropagateAction);
         loggers.interceptorInOutLogger.logGroupMsg('Output', propagateAction);
         loggers.interceptorInOutLogger.logGroupEnd();
-    };
+    }
 }
 
 function determineChainDirectionByResultLastInterceptor(prevPropagateAction, propagateAction) {

@@ -1,7 +1,5 @@
 import {isAction} from './action';
 
-const GeneratorConstructor = (function* () { /**/ }).constructor;
-
 const is = {
     undefined: (val) => typeof val === 'undefined',
     null: (val) => val === null,
@@ -10,7 +8,6 @@ const is = {
     number: (nr) => typeof nr === 'number',
     array: (arr) => Array.isArray(arr),
     promise: (prom) => prom && is.function(prom.then),
-    generator: (gen) => gen instanceof GeneratorConstructor,
     iterator: (iter) => iter && is.function(iter.next) && is.function(iter.throw),
     action: isAction,
     builder: (bldr) => bldr && is.function(bldr.build),
